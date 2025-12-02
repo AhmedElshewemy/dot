@@ -1,3 +1,8 @@
+
+# update os 
+alias au='if [ -f /etc/debian_version ]; then sudo apt update && apt list --upgradable; else echo "Error: This alias only works on Debian/Ubuntu systems"; fi'
+
+
 # My custom aliases
 alias ll='ls -la'
 alias gc='git commit'
@@ -5,7 +10,6 @@ alias gca='git commit --amend'
 alias gs='git status' 
 
 
-# # this from yasser and repo dot   ##
 
 git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
