@@ -1,7 +1,6 @@
 
-# update os 
-alias au='if [ -f /etc/debian_version ]; then sudo apt update && apt list --upgradable; else echo "Error: This alias only works on Debian/Ubuntu systems"; fi'
-
+# update os
+alias au='if command -v apt &> /dev/null; then sudo apt update && apt list --upgradable; else echo "Error: apt not found. This alias requires a Debian-based system."; fi'
 
 # My custom aliases
 alias ll='ls -la'
