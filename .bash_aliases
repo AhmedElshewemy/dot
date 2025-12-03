@@ -1,6 +1,8 @@
 
 # update os
-alias au='if command -v apt &> /dev/null; then sudo apt update && apt list --upgradable; else echo "Error: apt not found. This alias requires a Debian-based system."; fi'
+alias ud='if command -v apt &> /dev/null; then sudo apt update && apt list --upgradable; else echo "Error: apt not found. This alias requires a Debian-based system."; fi'
+
+alias ug='if command -v apt &> /dev/null; then sudo apt upgrade ; else echo "Error: apt not found. This alias requires a Debian-based system."; fi'
 
 # My custom aliases
 alias ll='ls -la'
