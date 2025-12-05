@@ -55,3 +55,7 @@ function st {
 alias co='git checkout'
 alias pick='git cherry-pick'
 
+
+# terraform
+alias tp = 'terraform plan '
+alias ta = 'terraform apply'
