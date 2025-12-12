@@ -57,5 +57,5 @@ alias pick='git cherry-pick'
 
 
 # terraform
-alias tp = 'terraform plan '
-alias ta = 'terraform apply'
+alias tp='terraform plan '
+alias ta='terraform apply'
