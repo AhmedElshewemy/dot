@@ -57,9 +57,36 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;32m\]\w\[\033[00m\] \$ '  
- #  PS1="[\t] \u:\w$ "
- #  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # Make prompt informative
+if test -f ~/.ps1.sh; then
+  source ~/.ps1.sh
+else
+  #Reset
+  Color_Off="\[\033[0m"       # Text Reset
+  PathShort="\w"
+  NewLine="\n"
+  # Regular Colors
+  Black="\[\e[0;30m\]"
+  Red="\[\e[0;31m\]"
+  Green="\[\e[0;32m\]"
+  Yellow="\[\e[0;33m\]"
+  Blue="\[\e[0;34m\]"
+  Purple="\[\e[0;35m\]"
+  Cyan="\[\e[0;36m\]"
+  White="\[\e[0;37m\]"
+  GrayBG="\[\033[44m\]"
+
+  export PS1=$GrayBG$Green"[\h]":$Color_Off'$(git branch &>/dev/null;\
+  if [ $? -eq 0 ]; then \
+    echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+    if [ "$?" -eq "0" ]; then \
+      echo "'$Green'"\($(git_branch "(%s)")\);\
+    else \
+      echo "'$Red'"$(git_branch "{%s}");\
+    fi) '$Cyan'\w'$Color_Off''$NewLine''$Red'▶ '$Color_Off'"; \
+  fi)'
+fi
+
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -113,5 +140,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-set -o vi
